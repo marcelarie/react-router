@@ -1,9 +1,9 @@
-import React, { useState } from "react"
 
-function Product() {
+function Product({ beer }) {
+    console.log(beer)
     return (
-        <div>
-            <p>Product</p>
+        <div key={beer.name}>
+            <p>{beer.name}</p>
         </div>
     )
 }

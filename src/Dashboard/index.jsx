@@ -1,10 +1,14 @@
-import React, { useState } from "react"
+import Product from './Product'
 
-function Dashboard({ data }) {
-    console.log(data)
+function Dashboard({ result }) {
+    const { data } = result
+
     return (
         <div>
             <h1>Dashboard</h1>
+            {
+                data && data.map(beer => <Product beer={beer} />)
+            }
         </div>
     )
 }

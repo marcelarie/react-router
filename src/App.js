@@ -2,16 +2,16 @@ import Nav from './Nav'
 import Home from './Home'
 import Api from './Api'
 import Dashboard from './Dashboard'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
 
 
 export default () => {
 
-    const [data, setData] = useState([])
+    const [result, setResult] = useState([])
 
     useEffect(() => {
-        Api('default', {}).then(result => setData(result))
+        Api('default', {}).then(result => setResult(result))
     }, [])
 
     return (
@@ -20,10 +20,10 @@ export default () => {
             {
                 <>
                     <Route exact path="/">
-                        <Home data={data} />
+                        <Home result={result} />
                     </Route>
                     <Route path="/dashboard">
-                        <Dashboard data={data} />
+                        <Dashboard result={result} />
                     </Route>
                 </>
             }

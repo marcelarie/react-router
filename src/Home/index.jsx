@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 
-function Home() {
+function Home({ result }) {
+    const { data } = result
+    // console.log(data)
     return (
         <div>
             <h1>Home</h1>
