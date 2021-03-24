@@ -1,11 +1,10 @@
 import React, { useState } from "react"
-import Product from './Product'
 
-function Dashboard() {
+function Dashboard({ data }) {
+    console.log(data)
     return (
         <div>
             <h1>Dashboard</h1>
-            <Product />
         </div>
     )
 }
