@@ -1,12 +1,12 @@
 import Product from './Product'
-import { Redirect, useParams, useLocation } from 'react-router-dom'
+import { Redirect, useParams, useHistory } from 'react-router-dom'
 import { useContext } from 'react'
 import { GeneralContext } from '../App.js'
 import './style.scss'
 
 function Dashboard({ result }) {
     const { data } = result
-    const history = useParams();
+    const history = useHistory();
 
     const { setters: { setPage, setPerPage, setMode, setDate }, states: { page, perPage, mode, date } } = useContext(GeneralContext)
 
