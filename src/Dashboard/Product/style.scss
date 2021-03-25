@@ -1,0 +1,20 @@
+
+.product {
+    background-color: Black;
+    margin: 0.5em;
+    flex: 1 0 21%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em;
+    text-align: center;
+    .product-info {
+        display: flex;
+        align-self: center;
+        div {
+            display: flex;
+            padding: 0em 2em;
+            flex-direction: column;
+        }
+    }
+}

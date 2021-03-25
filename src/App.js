@@ -25,6 +25,9 @@ export default () => {
                     <Route path="/dashboard">
                         <Dashboard result={result} />
                     </Route>
+                    <Route path="/logout">
+                        <h1>Logout</h1>
+                    </Route>
                 </>
             }
         </div>

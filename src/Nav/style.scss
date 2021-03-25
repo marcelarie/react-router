@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    padding: 0.5em;
+    justify-content: space-evenly;
+    a {
+        text-decoration: none;
+        color: inherit;
+        margin: 0 1em;
+        font-size: 2em;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+

@@ -1,15 +1,18 @@
 import Product from './Product'
+import './style.scss'
 
 function Dashboard({ result }) {
     const { data } = result
 
     return (
-        <div>
-            <h1>Dashboard</h1>
-            {
-                data && data.map(beer => <Product beer={beer} />)
-            }
-        </div>
+        <>
+            <h1 style={{ textAlign: 'center' }}>Punk API</h1>
+            <div className="dashboard">
+                {
+                    data && data.map(beer => <Product key={beer.id} beer={beer} />)
+                }
+            </div>
+        </>
     )
 }
 
