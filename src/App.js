@@ -2,7 +2,7 @@ import Nav from './Nav'
 import Home from './Home'
 import Api from './Api'
 import Dashboard from './Dashboard'
-import { Route, useParams } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { createContext } from 'react'
 
@@ -11,30 +11,35 @@ export const GeneralContext = createContext('')
 
 export default () => {
 
-    const params = useParams();
-    console.log(params)
-
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1)
     const [perPage, setPerPage] = useState(25)
     const [mode, setMode] = useState('pagination')
+    const [date, setDate] = useState('')
+
+    useEffect(() => {
+        setMode('pagination')
+    }, [page])
 
     useEffect(() => {
         Api(mode,
-            { page: page, perPage: perPage }
+            { page: page, perPage: perPage, date: date }
         ).then(result => setResult(result))
-    }, [page, perPage, mode])
+    }, [page, perPage, mode, date])
+
 
     const appMethods = {
         setters: {
             setPage: setPage,
             setPerPage: setPerPage,
-            setMode: setMode
+            setMode: setMode,
+            setDate: setDate
         },
         states: {
             page: page,
             perPage: perPage,
-            mode: mode
+            mode: mode,
+            date: date
         }
     }
 
@@ -51,7 +56,7 @@ export default () => {
                             <Dashboard result={result} />
                         </Route>
                         <Route path="/logout">
-                            <h1>Logout</h1>
+                            <h1 style={{ textAlign: 'center' }}>Logout</h1>
                         </Route>
                     </>
                 }

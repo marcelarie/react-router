@@ -1,12 +1,14 @@
 import React from "react"
+import { useContext } from 'react'
+import { GeneralContext } from '../App.js'
+import './style.scss'
 
 function Home({ result }) {
-    // const { data } = result
-    // console.log(data)
+    const { setters: { setPage, setPerPage }, states: { page, perPage } } = useContext(GeneralContext)
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <>
+            <h1 style={{ textAlign: 'center' }}>HOME</h1>
+        </>
     )
 }
 
