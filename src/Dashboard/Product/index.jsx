@@ -1,7 +1,6 @@
 import './style.scss'
 
 function Product({ beer }) {
-    console.log(beer)
     return (
         <div className="product" key={beer.name}>
             <h3>{beer.name}</h3>
