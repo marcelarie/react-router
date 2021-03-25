@@ -2,7 +2,7 @@ import Nav from './Nav'
 import Home from './Home'
 import Api from './Api'
 import Dashboard from './Dashboard'
-import { Route } from 'react-router-dom'
+import { Route, useParams } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { createContext } from 'react'
 
@@ -11,9 +11,12 @@ export const GeneralContext = createContext('')
 
 export default () => {
 
+    const params = useParams();
+    console.log(params)
+
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1)
-    const [perPage, setPerPage] = useState(6)
+    const [perPage, setPerPage] = useState(25)
     const [mode, setMode] = useState('pagination')
 
     useEffect(() => {
@@ -44,7 +47,7 @@ export default () => {
                         <Route exact path="/">
                             <Home result={result} />
                         </Route>
-                        <Route path="/dashboard/page=:page&per=:perPage">
+                        <Route path={`/dashboard/page=:page&per=:perPage`}>
                             <Dashboard result={result} />
                         </Route>
                         <Route path="/logout">
