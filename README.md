@@ -8,6 +8,11 @@
 ## TODOS
 
 - [ ] Disable next button on last page
-- [ ] Create Login
-- [ ] Create beer card
+- [ ] Add Login
+- [x] Add beer card
+- [ ] Add beer profile
+- [ ] Refactor 
+- [ ] Add redux 
+- [ ] Add styled components
+
 
