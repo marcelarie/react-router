@@ -17,6 +17,7 @@ function Api(mode, props) {
 
 export function checkNextPage(data, setCheckPage, perPage) {
     if (data) {
+        console.log(data)
         const lastItem = data[data.length - 1].id + 1 + perPage
         axios.get(`https://api.punkapi.com/v2/beers/${lastItem}`)
             .then(() => setCheckPage(false))

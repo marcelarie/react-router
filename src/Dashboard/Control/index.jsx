@@ -2,10 +2,10 @@ import { useContext } from 'react'
 import { GeneralContext } from '../../App.js'
 
 
-function Control({ data }) {
+function Control() {
 
-    const { setters: { setPage, setMode, setDate, setCheckPage },
-        states: { page, mode, checkPage } } = useContext(GeneralContext)
+    const { setters: { setPage, setMode, setDate, setCheckPage, setPerPage },
+        states: { page, mode, checkPage, perPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
         event.preventDefault();
@@ -19,16 +19,21 @@ function Control({ data }) {
         } else target.focus();
     }
 
+    const submitPerPage = (event) => {
+        event.preventDefault()
+        const beersPerPage = event.target.perPage.value
+        setPage(1)
+        setPerPage(parseInt(beersPerPage))
+    }
+
     const showReturn = mode === 'date' ? false : true
 
     return (
         <div className='control'>
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    margin: '1em 0'
-                }}>
+            <div style={{
+                display: 'flex', justifyContent: 'center',
+                margin: '1em 0'
+            }}>
                 <button
                     hidden={showReturn}
                     onClick={() => setMode('pagination')}
@@ -41,10 +46,27 @@ function Control({ data }) {
                         setCheckPage(false)
                     }}
                 >Last Page</button>
-                {
-                    mode === 'pagination' &&
-                    <p style={{ margin: '1em' }}>Page: {page}</p>
-                }
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    textAlign: 'center'
+                }}>
+                    {
+                        mode === 'pagination' &&
+                        <p style={{ margin: '1em' }}>Page: {page}</p>
+                    }
+
+                    <form onSubmit={e => submitPerPage(e)} >
+                        <input
+                            style={{ width: '2vw', margin: '0 auto' }}
+                            defaultValue={perPage} type='number' name='perPage'
+                        />
+                        <input type='submit' value='Per page' />
+                    </form>
+                </div>
+
                 <button
                     disabled={checkPage === true || mode === 'date'}
                     onClick={() => setPage(page + 1)}
