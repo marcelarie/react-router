@@ -11,7 +11,7 @@ import { createContext } from 'react'
 
 export const GeneralContext = createContext({})
 
-export default () => {
+const App = () => {
 
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1)
@@ -37,19 +37,21 @@ export default () => {
             setPerPage: setPerPage,
             setMode: setMode,
             setDate: setDate,
-            setCheckPage: setCheckPage
+            setCheckPage: setCheckPage,
+            setToken: setToken
         },
         states: {
             page: page,
             perPage: perPage,
             mode: mode,
             date: date,
-            checkPage: checkPage
+            checkPage: checkPage,
+            token: token
         }
     }
 
     if (!token) {
-        return <Login />
+        return <Login setToken={setToken} />
     }
 
     return (
@@ -70,3 +72,5 @@ export default () => {
     );
 }
 
+
+export default App

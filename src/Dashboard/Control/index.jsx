@@ -29,8 +29,8 @@ function Control() {
     const showReturn = mode === 'date' ? false : true
 
     return (
-        <form className='control'>
-            <form style={{
+        <div className='control'>
+            <div style={{
                 display: 'flex', justifyContent: 'center',
                 margin: '1em 0'
             }}>
@@ -47,7 +47,7 @@ function Control() {
                     }}
                 >Last Page</button>
 
-                <form style={{
+                <div style={{
                     display: 'flex',
                     justifyContent: 'center',
                     flexDirection: 'column',
@@ -65,15 +65,15 @@ function Control() {
                         />
                         <input type='submit' value='Per page' />
                     </form>
-                </form>
+                </div>
 
                 <button
                     disabled={checkPage === true || mode === 'date'}
                     onClick={() => setPage(page + 1)}
                 >Next Page</button>
-            </form>
+            </div>
 
-            <form style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <form onSubmit={e => searchDate(e)}>
                     <input
                         style={{ align: 'right' }}
@@ -81,9 +81,9 @@ function Control() {
                     />
                     <input type='submit' value="Submit" />
                 </form>
-            </form>
+            </div>
             <p>Sort by: {mode}</p>
-        </form>
+        </div>
     )
 }
 
