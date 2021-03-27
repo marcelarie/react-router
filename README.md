@@ -9,10 +9,10 @@
 
 - [ ] Add Login
 - [ ] Add beer profile
-- [ ] Add redux 
 - [ ] Add styled components
 - [ ] Handle error on click after "Too drunk" page
 - [ ] Add useReducer
+- [ ] Add redux 
 
 - [x] Refactor 
 - [x] Add perPage control 

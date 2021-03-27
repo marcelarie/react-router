@@ -20,10 +20,11 @@ export default () => {
 
     useEffect(() => setMode('pagination'), [page])
 
-    useEffect(() => {
-        Api(mode,
-            { page: page, perPage: perPage, date: date }
-        ).then(result => setResult(result))
+    useEffect(async () => {
+        const beers = await Api(mode,
+            { page: page, perPage: perPage, date: date })
+        setResult(beers)
+
         checkNextPage(result.data, setCheckPage, perPage)
     }, [page, perPage, mode, date])
 
