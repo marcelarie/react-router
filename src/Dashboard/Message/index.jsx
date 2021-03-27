@@ -11,12 +11,12 @@ function Message({ data }) {
 
     return (
         !data.length &&
-        <div style={messageStyle}>
+        <form style={messageStyle}>
             <img src="https://menopauselsupermodel.files.wordpress.com/2013/02/new_years_vintage_drunk.jpg"
                 alt="too-drunk-to-think" />
             <h1>Sorry we are too drunk!! Try later...</h1>
             <button onClick={() => setPage(page - 1)} >Go back</button>
-        </div >
+        </form >
     )
 }
 

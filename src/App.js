@@ -2,6 +2,8 @@ import Nav from './Nav'
 import Home from './Home'
 import Api, { checkNextPage } from './Api'
 import Dashboard from './Dashboard'
+import Login from './Login'
+
 import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { createContext } from 'react'
@@ -17,6 +19,7 @@ export default () => {
     const [mode, setMode] = useState('pagination')
     const [date, setDate] = useState('')
     const [checkPage, setCheckPage] = useState(false)
+    const [token, setToken] = useState()
 
     useEffect(() => setMode('pagination'), [page])
 
@@ -45,8 +48,12 @@ export default () => {
         }
     }
 
+    if (!token) {
+        return <Login />
+    }
+
     return (
-        <div>
+        <form>
             <GeneralContext.Provider value={appMethods}>
                 <Nav page={page} perPage={perPage} />
                 <Route exact path="/">
@@ -59,7 +66,7 @@ export default () => {
                     <h1 style={{ textAlign: 'center' }}>Logout</h1>
                 </Route>
             </GeneralContext.Provider>
-        </div >
+        </form >
     );
 }
 
