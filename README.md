@@ -7,7 +7,8 @@
 
 ## ERRORS
 - [ ] Handle error on click after "Too drunk" page
-- [ ] Fix form error on Control ->> Warning: validateDOMNesting(...): <form> cannot appear as a descendant of <form>.
+
+- [x] Fix form error on Control ->> Warning: validateDOMNesting(...): <form> cannot appear as a descendant of <form>.
 
 ## TODOS
 
@@ -16,6 +17,7 @@
 - [ ] Add styled components
 - [ ] Add useReducer
 - [ ] Add redux 
+- [ ] Add custom hook useToken 
 
 - [x] Add Login
 - [x] Refactor 

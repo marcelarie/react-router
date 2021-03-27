@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 import { login } from '../Api/login.js'
 
@@ -16,10 +16,15 @@ function Login({ setToken }) {
     return (
         <div className="login-container">
             <form onSubmit={handleSubmit}>
+
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" value={username} onChange={e => setUserName(e.target.value)} />
+                <input type="text" name="username" value={username}
+                    onChange={e => setUserName(e.target.value)} />
+
                 <label htmlFor="username">Password</label>
-                <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+                <input type="password" name="password" value={password}
+                    onChange={e => setPassword(e.target.value)} />
+
                 <button type="submit" name="submit" >Login</button>
             </form>
         </div >

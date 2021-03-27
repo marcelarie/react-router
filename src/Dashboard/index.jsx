@@ -10,7 +10,6 @@ function Dashboard({ result: { data } }) {
 
     const { states: { page, perPage } } = useContext(GeneralContext)
 
-
     if (!data) {
         return <Redirect to={`/dashboard/page=${page}&per=${perPage}`} />
     } else {

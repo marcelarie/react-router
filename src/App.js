@@ -3,6 +3,7 @@ import Home from './Home'
 import Api, { checkNextPage } from './Api'
 import Dashboard from './Dashboard'
 import Login from './Login'
+import { useToken } from './hooks/useToken.jsx'
 
 import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
@@ -23,10 +24,9 @@ const App = () => {
 
     useEffect(() => setMode('pagination'), [page])
 
-    useEffect(async () => {
-        const beers = await Api(mode,
-            { page: page, perPage: perPage, date: date })
-        setResult(beers)
+    useEffect(() => {
+        Api(mode, { page: page, perPage: perPage, date: date })
+            .then(beers => setResult(beers))
 
         checkNextPage(result.data, setCheckPage, perPage)
     }, [page, perPage, mode, date])
@@ -55,7 +55,7 @@ const App = () => {
     }
 
     return (
-        <form>
+        <>
             <GeneralContext.Provider value={appMethods}>
                 <Nav page={page} perPage={perPage} />
                 <Route exact path="/">
@@ -68,7 +68,7 @@ const App = () => {
                     <h1 style={{ textAlign: 'center' }}>Logout</h1>
                 </Route>
             </GeneralContext.Provider>
-        </form >
+        </>
     );
 }
 

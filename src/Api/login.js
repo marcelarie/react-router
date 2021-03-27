@@ -7,7 +7,6 @@ export const login = async (username, password) => {
             password: password
         }
     }).then(authorizarion => authorizarion)
-
 }
 
 
