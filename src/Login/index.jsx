@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import './style.scss'
 import { login } from '../Api/login.js'
+import handleSubmit from '../actions/handleSubmit.jsx'
 
 function Login({ setToken }) {
 
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = async event => {
-        event.preventDefault()
-        const token = await login({ username, password })
-        setToken(token);
-    }
+    // const handleSubmit = async event => {
+    // event.preventDefault()
+    // const token = await login({ username, password })
+    // setToken(token);
+    // }
 
     return (
         <div className="login-container">
