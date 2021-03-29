@@ -8,11 +8,13 @@ import { useToken } from './hooks/useToken.jsx'
 import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { createContext } from 'react'
+import { useSelector } from 'react-redux'
 
+export const GeneralContext = createContext({});
 
-export const GeneralContext = createContext({})
 
 const App = () => {
+    const logged = useSelector(state => state.logged)
 
     const [result, setResult] = useState([])
     const [page, setPage] = useState(1)
