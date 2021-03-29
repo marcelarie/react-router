@@ -1,15 +1,15 @@
 import { useContext } from 'react'
 import { GeneralContext } from '../../App.js'
-import { nextPage, lastPage } from '../../actions/pages.js'
+import { nextPage, lastPage, changePage, changePerPage } from '../../redux/actions/pages.js'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Control() {
 
     const dispatch = useDispatch();
-    const page = useSelector(state => state.pages)
     const perPage = useSelector(state => state.perPage)
+    const page = useSelector(state => state.pages)
 
-    const { setters: { setPage, setMode, setDate, setCheckPage, setPerPage },
+    const { setters: { setMode, setDate, setCheckPage },
         states: { mode, checkPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
@@ -27,9 +27,8 @@ function Control() {
     const submitPerPage = (event) => {
         event.preventDefault()
         const beersPerPage = parseInt(event.target.perPage.value)
-        // setPage(1)
-        // setPerPage(parseInt(beersPerPage))
-        dispatch(changePerPage(beersPerPage))
+        dispatch(changePage(1)) // setPage(1)
+        dispatch(changePerPage(beersPerPage)) // setPerPage(parseInt(beersPerPage))
     }
 
     const showReturn = mode === 'date' ? false : true
@@ -48,8 +47,7 @@ function Control() {
                 <button
                     disabled={page === 1 || mode === 'date'}
                     onClick={() => {
-                        // setPage(page - 1)
-                        dispatch(lastPage())
+                        dispatch(lastPage()) // setPage(page - 1)
                         setCheckPage(false)
                     }}
                 >Last Page</button>
@@ -68,7 +66,7 @@ function Control() {
                     <form onSubmit={e => submitPerPage(e)} >
                         <input
                             style={{ width: '2vw', margin: '0 auto' }}
-                            defaultValue={perPage} type='number' name='perPage'
+                            defaultValue={perPage} min='0' type='number' name='perPage'
                         />
                         <input type='submit' value='Per page' />
                     </form>
@@ -76,8 +74,7 @@ function Control() {
 
                 <button
                     disabled={checkPage === true || mode === 'date'}
-                    // onClick={() => setPage(page + 1)}
-                    onClick={() => dispatch(nextPage())}
+                    onClick={() => dispatch(nextPage())} // onClick={() => setPage(page + 1)}
                 >Next Page</button>
             </div>
 

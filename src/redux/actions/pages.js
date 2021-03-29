@@ -20,7 +20,7 @@ const changePage = payload => {
 const changePerPage = payload => {
     return {
         type: 'CHANGE_PER_PAGE',
-        payload
+        payload: payload
     }
 }
 

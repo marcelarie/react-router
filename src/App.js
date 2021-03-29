@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux'
 
 export const GeneralContext = createContext({});
 
-
 const App = () => {
     const page = useSelector(state => state.pages)
     const perPage = useSelector(state => state.perPage)
