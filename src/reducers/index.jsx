@@ -1,9 +1,10 @@
 
 import { combineReducers } from 'redux'
-import loggedReducer from './logged.jsx'
-
+import pagesReducer from '../reducers/pages.jsx'
+import perPagesReducer from '../reducers/perPages.jsx'
 
 export default combineReducers({
-    logged: loggedReducer
+    pages: pagesReducer,
+    perPage: perPagesReducer
 })
 

@@ -3,7 +3,7 @@ import Home from './Home'
 import Api, { checkNextPage } from './Api'
 import Dashboard from './Dashboard'
 import Login from './Login'
-import { useToken } from './hooks/useToken.jsx'
+// import { useToken } from './hooks/useToken.jsx'
 
 import { Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
@@ -14,11 +14,12 @@ export const GeneralContext = createContext({});
 
 
 const App = () => {
-    const logged = useSelector(state => state.logged)
+    const page = useSelector(state => state.pages)
+    const perPage = useSelector(state => state.perPage)
 
     const [result, setResult] = useState([])
-    const [page, setPage] = useState(1)
-    const [perPage, setPerPage] = useState(25)
+    // const [page, setPage] = useState(1)
+    // const [perPage, setPerPage] = useState(25)
     const [mode, setMode] = useState('pagination')
     const [date, setDate] = useState('')
     const [checkPage, setCheckPage] = useState(false)
@@ -35,8 +36,8 @@ const App = () => {
 
     const appMethods = {
         setters: {
-            setPage: setPage,
-            setPerPage: setPerPage,
+            // setPage: setPage,
+            // setPerPage: setPerPage,
             setMode: setMode,
             setDate: setDate,
             setCheckPage: setCheckPage,

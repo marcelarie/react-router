@@ -1,11 +1,16 @@
 import { useContext } from 'react'
 import { GeneralContext } from '../../App.js'
-
+import { nextPage, lastPage } from '../../actions/pages.js'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Control() {
 
+    const dispatch = useDispatch();
+    const page = useSelector(state => state.pages)
+    const perPage = useSelector(state => state.perPage)
+
     const { setters: { setPage, setMode, setDate, setCheckPage, setPerPage },
-        states: { page, mode, checkPage, perPage } } = useContext(GeneralContext)
+        states: { mode, checkPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
         event.preventDefault();
@@ -21,9 +26,10 @@ function Control() {
 
     const submitPerPage = (event) => {
         event.preventDefault()
-        const beersPerPage = event.target.perPage.value
-        setPage(1)
-        setPerPage(parseInt(beersPerPage))
+        const beersPerPage = parseInt(event.target.perPage.value)
+        // setPage(1)
+        // setPerPage(parseInt(beersPerPage))
+        dispatch(changePerPage(beersPerPage))
     }
 
     const showReturn = mode === 'date' ? false : true
@@ -42,7 +48,8 @@ function Control() {
                 <button
                     disabled={page === 1 || mode === 'date'}
                     onClick={() => {
-                        setPage(page - 1)
+                        // setPage(page - 1)
+                        dispatch(lastPage())
                         setCheckPage(false)
                     }}
                 >Last Page</button>
@@ -69,7 +76,8 @@ function Control() {
 
                 <button
                     disabled={checkPage === true || mode === 'date'}
-                    onClick={() => setPage(page + 1)}
+                    // onClick={() => setPage(page + 1)}
+                    onClick={() => dispatch(nextPage())}
                 >Next Page</button>
             </div>
 
@@ -83,7 +91,7 @@ function Control() {
                 </form>
             </div>
             <p>Sort by: {mode}</p>
-        </div>
+        </div >
     )
 }
 
