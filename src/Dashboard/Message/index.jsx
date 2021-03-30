@@ -1,6 +1,4 @@
-import { useContext } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { GeneralContext } from '../../App.js'
+import { useDispatch } from 'react-redux';
 import { lastPage } from '../../redux/actions/pages.js';
 
 const messageStyle = {
@@ -9,9 +7,7 @@ const messageStyle = {
 }
 
 function Message({ data }) {
-    // const { states: { page }, setters: { setPage } } = useContext(GeneralContext)
     const dispatch = useDispatch();
-    const page = useSelector(state => state.pages)
 
     return (
         !data.length &&

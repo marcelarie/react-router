@@ -2,15 +2,17 @@ import { useContext } from 'react'
 import { GeneralContext } from '../../App.js'
 import { nextPage, lastPage, changePage, changePerPage } from '../../redux/actions/pages.js'
 import { useDispatch, useSelector } from 'react-redux'
+import { pagination, date } from '../../redux/actions/mode.js'
 
 function Control() {
 
     const dispatch = useDispatch();
-    const perPage = useSelector(state => state.perPage)
-    const page = useSelector(state => state.pages)
+    const perPage = useSelector(({ pages }) => pages.perPage)
+    const page = useSelector(({ pages }) => pages.page)
+    const mode = useSelector(({ modes }) => modes.mode)
 
-    const { setters: { setMode, setDate, setCheckPage },
-        states: { mode, checkPage } } = useContext(GeneralContext)
+    const { setters: { setDate, setCheckPage },
+        states: { checkPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
         event.preventDefault();
@@ -18,9 +20,9 @@ function Control() {
         const split = target.value.split('-');
 
         if (split.length > 1) {
-            const date = split[1] + '/' + split[0]
-            setDate(date)
-            setMode('date')
+            const formatedDate = split[1] + '/' + split[0]
+            setDate(formatedDate)
+            dispatch(date())// setMode('date')
         } else target.focus();
     }
 
@@ -41,7 +43,7 @@ function Control() {
             }}>
                 <button
                     hidden={showReturn}
-                    onClick={() => setMode('pagination')}
+                    onClick={() => dispatch(pagination())/* setMode('pagination') */}
                 >Return</button>
 
                 <button
@@ -65,7 +67,7 @@ function Control() {
 
                     <form onSubmit={e => submitPerPage(e)} >
                         <input
-                            style={{ width: '2vw', margin: '0 auto' }}
+                            style={{ width: '30px', margin: '0 auto' }}
                             defaultValue={perPage} min='0' type='number' name='perPage'
                         />
                         <input type='submit' value='Per page' />

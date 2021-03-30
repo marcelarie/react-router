@@ -1,11 +1,11 @@
 
 import { combineReducers } from 'redux'
 import pagesReducer from '../reducers/pages.jsx'
-import perPagesReducer from '../reducers/perPages.jsx'
+import modeReducer from '../reducers/mode.jsx'
 
 const reducers = combineReducers({
     pages: pagesReducer,
-    perPage: perPagesReducer
+    modes: modeReducer
 })
 
 export default reducers

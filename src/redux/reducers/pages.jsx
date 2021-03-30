@@ -1,12 +1,19 @@
 
-const pagesReducer = (state = 1, action) => {
-    switch (action.type) {
+const pagesState = {
+    page: 1,
+    perPage: 25
+}
+
+const pagesReducer = (state = pagesState, { type, payload }) => {
+    switch (type) {
         case 'NEXT_PAGE':
-            return state + 1;
+            return { ...state, page: state.page + 1 };
         case 'LAST_PAGE':
-            return state - 1;
+            return { ...state, page: state.page - 1 };
         case 'CHANGE_PAGE':
-            return action.payload;
+            return { ...state, page: payload };
+        case 'CHANGE_PER_PAGE':
+            return { ...state, perPage: payload };
         default:
             return state;
     }
