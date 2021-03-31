@@ -2,7 +2,8 @@ import { useContext } from 'react'
 import { GeneralContext } from '../../App.js'
 import { nextPage, lastPage, changePage, changePerPage } from '../../redux/actions/pages.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { pagination, date } from '../../redux/actions/mode.js'
+import { paginationMode, dateMode } from '../../redux/actions/mode.js'
+import { changeDate } from '../../redux/actions/date.js'
 
 function Control() {
 
@@ -11,7 +12,7 @@ function Control() {
     const page = useSelector(({ pages }) => pages.page)
     const mode = useSelector(({ modes }) => modes.mode)
 
-    const { setters: { setDate, setCheckPage },
+    const { setters: { setCheckPage },
         states: { checkPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
@@ -21,8 +22,8 @@ function Control() {
 
         if (split.length > 1) {
             const formatedDate = split[1] + '/' + split[0]
-            setDate(formatedDate)
-            dispatch(date())// setMode('date')
+            dispatch(changeDate(formatedDate)) // setDate(formatedDate)
+            dispatch(dateMode()) // setMode('date')
         } else target.focus();
     }
 
@@ -43,7 +44,7 @@ function Control() {
             }}>
                 <button
                     hidden={showReturn}
-                    onClick={() => dispatch(pagination())/* setMode('pagination') */}
+                    onClick={() => dispatch(paginationMode())/* setMode('pagination') */}
                 >Return</button>
 
                 <button

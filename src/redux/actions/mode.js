@@ -1,14 +1,14 @@
 
-const pagination = () => {
+const paginationMode = () => {
     return {
         type: 'PAGINATION'
     }
 }
 
-const date = () => {
+const dateMode = () => {
     return {
         type: 'DATE'
     }
 }
 
-export { pagination, date }
+export { paginationMode, dateMode }

@@ -1,7 +1,7 @@
 
 const pagesState = {
     page: 1,
-    perPage: 25
+    perPage: 25,
 }
 
 const pagesReducer = (state = pagesState, { type, payload }) => {

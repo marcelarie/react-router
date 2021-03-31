@@ -1,14 +1,14 @@
 import Product from './Product'
 import { Redirect } from 'react-router-dom'
-import { useContext } from 'react'
-import { GeneralContext } from '../App.js'
 import Control from './Control'
 import Message from './Message'
 import './style.scss'
+import { useSelector } from 'react-redux'
 
 function Dashboard({ result: { data } }) {
 
-    const { states: { page, perPage } } = useContext(GeneralContext)
+    const page = useSelector(({ pages }) => pages.page)
+    const perPage = useSelector(({ pages }) => pages.perPage)
 
     if (!data) {
         return <Redirect to={`/dashboard/page=${page}&per=${perPage}`} />
