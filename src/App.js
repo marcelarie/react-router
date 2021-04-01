@@ -8,7 +8,7 @@ import { setResult } from './redux/actions/dataApi.js'
 
 import Nav from './Nav'
 import Home from './Home'
-import Api, { checkNextPage } from './Api'
+import { checkNextPage } from './Api'
 import Dashboard from './Dashboard'
 import Login from './Login'
 
@@ -16,52 +16,41 @@ import Login from './Login'
 export const GeneralContext = createContext({});
 
 const App = () => {
+
     const dispatch = useDispatch();
     const page = useSelector(({ pages }) => pages.page)
     const perPage = useSelector(({ pages }) => pages.perPage)
     const mode = useSelector(({ modes }) => modes.mode)
     const date = useSelector(({ dates }) => dates.date)
     const result = useSelector(({ data }) => data.result)
+    const token = useSelector(({ tokens }) => tokens.token)
 
-    // const [page, setPage] = useState(1)
-    // const [perPage, setPerPage] = useState(25)
-    // const [mode, setMode] = useState('pagination')
-    // const [date, setDate] = useState('')
-    // const [result, setResult] = useState([])
     const [checkPage, setCheckPage] = useState(false)
-    const [token, setToken] = useState()
 
     useEffect(
-        () => dispatch(paginationMode()) /*setMode('pagination')*/, [page])
+        () => dispatch(paginationMode()) /*setMode('pagination')*/,
+        [page])
 
     useEffect(() => {
-        Api(mode, { page: page, perPage: perPage, date: date })
-            .then(beers => dispatch(setResult(beers)) /* setResult(beers) */)
+
+        dispatch(setResult({ page, perPage, mode, date }));
 
         checkNextPage(result.data, setCheckPage, perPage)
+
     }, [page, perPage, mode, date])
 
     const appMethods = {
         setters: {
-            // setPage: setPage,
-            // setPerPage: setPerPage,
-            // setMode: setMode,
-            // setDate: setDate,
             setCheckPage: setCheckPage,
-            setToken: setToken
         },
         states: {
-            page: page,
-            perPage: perPage,
-            mode: mode,
-            date: date,
             checkPage: checkPage,
-            token: token
         }
     }
 
     if (!token) {
-        return <Login setToken={setToken} />
+        console.log('NO TOKEN')
+        return <Login />
     }
 
     return (

@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 import './style.scss'
-import { login } from '../Api/login.js'
+// import { login } from '../Api/login.js'
+import { useDispatch } from 'react-redux';
+import { getToken } from '../redux/actions/token.js'
 // import handleSubmit from '../actions/handleSubmit.jsx'
 
-function Login({ setToken }) {
+function Login() {
+
+    const dispatch = useDispatch()
+    // const token = useSelector(state => state.token)
 
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async event => {
         event.preventDefault()
-        const token = await login({ username, password })
-        setToken(token);
+        dispatch(getToken(username, password))
+        // const token = await login({ username, password })
+        // setToken(token);
     }
 
     return (
