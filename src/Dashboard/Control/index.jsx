@@ -1,5 +1,3 @@
-import { useContext } from 'react'
-import { GeneralContext } from '../../App.js'
 import { nextPage, lastPage, changePage, changePerPage } from '../../redux/actions/pages.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { paginationMode, dateMode } from '../../redux/actions/mode.js'
@@ -11,9 +9,8 @@ function Control() {
     const perPage = useSelector(({ pages }) => pages.perPage)
     const page = useSelector(({ pages }) => pages.page)
     const mode = useSelector(({ modes }) => modes.mode)
+    const checkPage = useSelector(({ checkNextPage }) => checkNextPage.checkPage)
 
-    const { setters: { setCheckPage },
-        states: { checkPage } } = useContext(GeneralContext)
 
     const searchDate = (event) => {
         event.preventDefault();
@@ -51,7 +48,7 @@ function Control() {
                     disabled={page === 1 || mode === 'date'}
                     onClick={() => {
                         dispatch(lastPage()) // setPage(page - 1)
-                        setCheckPage(false)
+                        // setCheckPage(false)
                     }}
                 >Last Page</button>
 
