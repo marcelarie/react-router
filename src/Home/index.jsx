@@ -1,7 +1,7 @@
-import React from "react"
 import './style.scss'
 
-function Home({ result }) {
+function Home() {
+
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>HOME</h1>

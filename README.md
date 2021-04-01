@@ -10,27 +10,32 @@
 
 ## TODOS
 
-- [ ] Add secure routes on React ROUTER
-- [ ] finish https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
-- [ ] Add beer profile
-- [ ] Add styled components
-- [ ] Add useReducer
-- [ ] Add custom hook useToken 
+- [ ] Handle Async Calls
+- [ ] Add Secure Routes on React Router
+- [ ] Finish https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
+- [ ] Beer Profile
+- [ ] Styled Components
+- [ ] UseReducer
 
 ## DONE 
 
-- [x] Add redux 
-- [x] Add Login
+- [x] Redux 
+- [x] Login
+- [x] Token Authentication
+- [x] Add Noje.js Local Server for Authentication
 - [x] Refactor 
-- [x] Add perPage control 
-- [x] Add beer card
-- [x] Disable next button on last page
-- [x] Add middleware.
-- [x] Add third party logger middleware.
-- [x] Convert async calls to middleware.
+- [x] PerPage Control 
+- [x] Beer Card
+- [x] Disable Next Button on Last Page
+- [x] Middleware
+- [x] Third Party Logger Middleware
+- [x] Convert Async Calls to Middleware
+- [x] Custom Hook/Action for Token
 
 ## ERRORS
 - [ ] Handle error on click after "Too drunk" page
 - [ ] Handle next page button block after arriving to last page
+- [ ] Fix bug clicking on next button quick can make the user pass
+      the last page
 
 - [x] Fix form error on Control ->> Warning: validateDOMNesting(...): <form> cannot appear as a descendant of <form>.

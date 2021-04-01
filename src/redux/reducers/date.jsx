@@ -1,3 +1,4 @@
+import types from '../types'
 
 const dateState = {
     date: ''
@@ -5,7 +6,7 @@ const dateState = {
 
 const dateReducer = (state = dateState, { type, payload }) => {
     switch (type) {
-        case 'CHANGE_DATE':
+        case types.CHANGE_DATE:
             return { ...state, date: payload };
         default:
             return state;

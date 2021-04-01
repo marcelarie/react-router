@@ -1,26 +1,27 @@
+import types from '../types'
 
 const nextPage = () => {
     return {
-        type: 'NEXT_PAGE'
+        type: types.NEXT_PAGE
     }
 }
 
 const lastPage = () => {
     return {
-        type: 'LAST_PAGE'
+        type: types.LAST_PAGE
     }
 }
 
 const changePage = payload => {
     return {
-        type: 'CHANGE_PAGE',
+        type: types.CHANGE_PAGE,
         payload
     }
 }
 
 const changePerPage = payload => {
     return {
-        type: 'CHANGE_PER_PAGE',
+        type: types.CHANGE_PER_PAGE,
         payload
     }
 }

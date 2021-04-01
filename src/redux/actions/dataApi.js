@@ -1,9 +1,10 @@
 import axios from "axios"
+import types from '../types'
 
 
 const setResult = ({ page, perPage, mode, date }) => {
 
-    return async (dispatch, getState) => {
+    return async dispatch => {
         switch (mode) {
             case 'pagination':
                 console.log(`Page:${page} perPage: ${perPage}`)
@@ -20,7 +21,7 @@ const setResult = ({ page, perPage, mode, date }) => {
         }
 
         dispatch({
-            type: 'SET_RESULT',
+            type: types.SET_RESULT,
             payload: result
         })
     }

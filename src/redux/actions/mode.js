@@ -1,13 +1,14 @@
+import types from '../types'
 
 const paginationMode = () => {
     return {
-        type: 'PAGINATION'
+        type: types.PAGINATION
     }
 }
 
 const dateMode = () => {
     return {
-        type: 'DATE'
+        type: types.DATE
     }
 }
 

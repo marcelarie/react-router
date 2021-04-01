@@ -1,4 +1,5 @@
 import { nextPage, lastPage, changePage, changePerPage } from '../../redux/actions/pages.js'
+import { setCheckNextPage } from '../../redux/actions/checkNextPage.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { paginationMode, dateMode } from '../../redux/actions/mode.js'
 import { changeDate } from '../../redux/actions/date.js'
@@ -28,7 +29,7 @@ function Control() {
         event.preventDefault()
         const beersPerPage = parseInt(event.target.perPage.value)
         dispatch(changePage(1)) // setPage(1)
-        dispatch(changePerPage(beersPerPage)) // setPerPage(parseInt(beersPerPage))
+        dispatch(changePerPage(beersPerPage)) // setPerPage(beersPerPage)
     }
 
     const showReturn = mode === 'date' ? false : true
@@ -48,7 +49,7 @@ function Control() {
                     disabled={page === 1 || mode === 'date'}
                     onClick={() => {
                         dispatch(lastPage()) // setPage(page - 1)
-                        // setCheckPage(false)
+                        dispatch(setCheckNextPage(false)) // setCheckPage(false)
                     }}
                 >Last Page</button>
 

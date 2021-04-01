@@ -1,7 +1,9 @@
+import types from '../types'
+
 
 const changeDate = payload => {
     return {
-        type: 'CHANGE_DATE',
+        type: types.CHANGE_DATE,
         payload
     }
 }

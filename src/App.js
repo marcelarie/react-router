@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { createContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -32,28 +32,24 @@ const App = () => {
         [page])
 
     useEffect(() => {
-
         dispatch(setResult({ page, perPage, mode, date }));
 
         dispatch(checkNextPage(result.data, perPage));
-
     }, [page, perPage, mode, date])
 
     const appMethods = {}
 
-    if (!token) {
-        return <Login />
-    }
+    if (!token) return <Login />
 
     return (
         <>
             <GeneralContext.Provider value={appMethods}>
-                <Nav page={page} perPage={perPage} />
+                <Nav />
                 <Route exact path="/">
-                    <Home result={result} />
+                    <Home />
                 </Route>
                 <Route path={`/dashboard/page=:page&per=:perPage`}>
-                    <Dashboard result={result} />
+                    <Dashboard />
                 </Route>
                 <Route path="/logout">
                     <h1 style={{ textAlign: 'center' }}>Logout</h1>

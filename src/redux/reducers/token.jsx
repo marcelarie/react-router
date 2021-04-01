@@ -1,3 +1,4 @@
+import types from '../types'
 
 const tokenState = {
     token: null
@@ -5,7 +6,8 @@ const tokenState = {
 
 const tokenReducer = (state = tokenState, { type, payload }) => {
     switch (type) {
-        case 'GET_TOKEN':
+        case types.GET_TOKEN:
+            // case 'GET_TOKEN':
             return { ...state, ...payload }
         default:
             return state

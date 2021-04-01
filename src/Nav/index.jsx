@@ -1,7 +1,12 @@
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './style.scss'
 
-function Nav({ page, perPage }) {
+function Nav() {
+
+    const page = useSelector(({ pages }) => pages.page)
+    const perPage = useSelector(({ pages }) => pages.perPage)
+
     return (
         <nav>
             <NavLink to="/">Home</NavLink>

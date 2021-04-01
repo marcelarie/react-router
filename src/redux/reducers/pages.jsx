@@ -1,4 +1,6 @@
 
+import types from '../types'
+
 const pagesState = {
     page: 1,
     perPage: 25,
@@ -6,13 +8,13 @@ const pagesState = {
 
 const pagesReducer = (state = pagesState, { type, payload }) => {
     switch (type) {
-        case 'NEXT_PAGE':
+        case types.NEXT_PAGE:
             return { ...state, page: state.page + 1 };
-        case 'LAST_PAGE':
+        case types.LAST_PAGE:
             return { ...state, page: state.page - 1 };
-        case 'CHANGE_PAGE':
+        case types.CHANGE_PAGE:
             return { ...state, page: payload };
-        case 'CHANGE_PER_PAGE':
+        case types.CHANGE_PER_PAGE:
             return { ...state, perPage: payload };
         default:
             return state;

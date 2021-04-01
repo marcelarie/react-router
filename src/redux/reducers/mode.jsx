@@ -1,3 +1,4 @@
+import types from '../types'
 
 const modeState = {
     mode: 'pagination'
@@ -5,9 +6,9 @@ const modeState = {
 
 const modeReducer = (state = modeState, { type, payload }) => {
     switch (type) {
-        case 'PAGINATION':
+        case types.PAGINATION:
             return { ...state, mode: 'pagination' };
-        case 'DATE':
+        case types.DATE:
             return { ...state, mode: 'date' };
         default:
             return state
